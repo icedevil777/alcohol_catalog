@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.top-head {
+    background-color: #45b903;
+    color: #7d1515;
+    padding: 0.5% 0;
+    text-align: center;
+    margin: 0;
+}
+
+#top_phone {
+    color: #9f0202;
+}
+
+.second-head-col{
+    border: 1px solid #c5bcbc;
+    height: 100px;
+    padding: 2%;
+}
+
+.third-head{
+    background-color: #498823;
+    height: 50%;
+    color: #7d1515;
+}
+
+.third-head-col {
+    border: 1px solid #868484;
+    padding: 1%;
+
+}
+
+.bar {
+    border: 1px solid #868484;
+    height: 400px;
+
+}
