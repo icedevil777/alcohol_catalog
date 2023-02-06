@@ -5,10 +5,8 @@
 
 .top-head {
     background-color: #45b903;
-    color: #7d1515;
-    padding: 0.5% 0;
+    color: #6c0202;
     text-align: center;
-    margin: 0;
 }
 
 #top_phone {
@@ -16,22 +14,24 @@
 }
 
 .second-head-col{
+    background-color: #ff6633;
+    color: white;
     border: 1px solid #c5bcbc;
-    height: 100px;
-    padding: 2%;
+    height: 60px;
 }
 
 .third-head{
     background-color: #498823;
     height: 50%;
-    color: #7d1515;
+    color: #6c0202;
 }
 
 .third-head-col {
     border: 1px solid #868484;
-    padding: 1%;
 
 }
+
+
 
 .bar {
     border: 1px solid #868484;
