@@ -4,8 +4,9 @@
 
 }
 
-body {
+section {
     background: url(../images/wine.jpg) no-repeat;
+    height: 1200px;
     background-size: cover;
 }
 
@@ -17,17 +18,23 @@ body {
 
 #top_phone {
     color: #9f0202;
+    flex: none;
 }
 
 
 #logo{
-    width: 230px;
-    position: relative;
+    width: 200px;
+
+}
+
+.second-head-row {
+    background: url(../images/second_head.png);
+    background-size: cover;
+
 }
 
 .second-head-col {
-    background: url(../images/second_head.png);
-    background-size: cover;
+
 
     color: #440209;
     height: 60px;
@@ -49,5 +56,11 @@ body {
 .bar {
     border: 1px solid #868484;
     height: 400px;
+
+}
+
+footer {
+    background: url(../images/second_head.png);
+    background-size: cover;
 
 }
