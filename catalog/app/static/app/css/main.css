@@ -1,11 +1,17 @@
 * {
     margin: 0;
     padding: 0;
+
+}
+
+body {
+    background: url(../images/wine.jpg) no-repeat;
+    background-size: cover;
 }
 
 .top-head {
-    background-color: #45b903;
-    color: #6c0202;
+    background-color: #1e0000;
+    color: white;
     text-align: center;
 }
 
@@ -13,24 +19,31 @@
     color: #9f0202;
 }
 
-.second-head-col{
-    background-color: #ff6633;
-    color: white;
-    border: 1px solid #c5bcbc;
+
+#logo{
+    width: 230px;
+    position: relative;
+}
+
+.second-head-col {
+    background: url(../images/second_head.png);
+    background-size: cover;
+
+    color: #440209;
     height: 60px;
 }
 
-.third-head{
-    background-color: #498823;
-    height: 50%;
-    color: #6c0202;
+.third-head {
+    background-color: #440209;
+    height: 100%;
+    color: white;
+
 }
 
 .third-head-col {
     border: 1px solid #868484;
 
 }
-
 
 
 .bar {
