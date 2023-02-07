@@ -4,10 +4,23 @@
 
 }
 
-section {
-    background: url(../images/wine.jpg) no-repeat;
+a.text:active, /* активная/посещенная ссылка */
+a.text:hover,  /* при наведении */
+a.text {
+  text-decoration: white;
+  color: #ffffff;
+}
+
+main {
+    background-image: url(../images/wine.jpg);
     height: 1200px;
     background-size: cover;
+    filter: grayscale(80%);
+    /*-webkit-filter: contrast(30%);*/
+    /*-webkit-filter: brightness(30%);*/
+
+
+
 }
 
 .top-head {
@@ -59,8 +72,18 @@ section {
 
 }
 
+.dropdown:hover .dropdown-menu {display: block;}
+
+#ramka{
+    margin-right: 150px;
+    background-image: url(../images/fotor_png.png);
+    background-size: inherit;
+}
+
+
 footer {
     background: url(../images/second_head.png);
     background-size: cover;
 
 }
+
