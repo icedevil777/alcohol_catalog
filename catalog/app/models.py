@@ -30,9 +30,10 @@ class Product(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название товара")
     title_rus = models.CharField(max_length=255,
                                  verbose_name="Название товара на русском")
-    image = models.ImageField(verbose_name="Фото", null=True)
-    categories = models.ForeignKey(Category, on_delete=models.CASCADE,
-                                   verbose_name="Категория")
+    image = models.ImageField(upload_to='wines', verbose_name="Фото", null=True, blank=True)
+    # categories = models.ForeignKey(Category, on_delete=models.CASCADE,
+    #                                verbose_name="Категория",
+    #                                null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2,
                                 verbose_name="Цена")
     country = models.CharField(max_length=50, verbose_name="Страна")
@@ -77,6 +78,8 @@ class Wine(Product):
         ("D", "Сухое"),
     )
 
+    color = models.CharField(max_length=1, choices=COLOR_TYPE, default="W")
+    sugar = models.CharField(max_length=2, choices=SUGAR_AMOUNT, default="S")
     grape_variety = models.CharField(
         max_length=50,
         verbose_name="Сорт винограда"

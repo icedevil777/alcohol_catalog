@@ -9,12 +9,13 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+ROOT_DIR = environ.Path(__file__) - 3
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -85,6 +86,13 @@ DATABASES = {
         'PORT': '5555',
     }
 }
+
+MEDIA_ROOT = os.path.join(ROOT_DIR, 'media_root/')
+STATIC_ROOT = os.path.join(ROOT_DIR, 'static_root/')
+
+
+STATIC_URL = 'static_root/'
+MEDIA_URL = 'media_root/'
 
 
 # Password validation

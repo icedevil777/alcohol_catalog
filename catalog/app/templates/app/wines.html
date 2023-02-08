@@ -1,7 +1,39 @@
 {% extends 'app/base.html' %}
-{% block title %}Wines{% endblock %}
-{% block content %}
-    <main>
+{% load static %}
+{% block head %}
+{% endblock %}
 
-    </main>
+{% block title %}Wines{% endblock %}
+
+{% block content %}
+    <div class="container-fluid ">
+        <div class="row p-5">
+            <div class="col-12 text-center justify-content-center border mein_col" style="">
+                <h3>Каталог вина</h3>
+                <div class="row">
+                    <div class="col-2 border" style="height: 1000px">
+                        <div class="row border" style="height: 300px">
+                            <h5>Цена</h5>
+                        </div>
+                        <div class="row border" style="height: 300px">
+                            <h5>Цвет</h5>
+                        </div>
+                        <div class="row border" style="height: 300px">
+                            <h5>Содержание сахара</h5>
+                        </div>
+                    </div>
+                    <div class="col-10 border" style="height: 1000px">
+                        <div class="row border" style="height: 300px">
+                                   {% for wine in object_list %}
+                                       <li>{{ wine }}</li>
+                                   {% endfor %}
+                        </div>
+                        <div class="row border" style="height: 300px"></div>
+                        <div class="row border" style="height: 300px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

@@ -14,12 +14,12 @@ a.text {
 
 
 main {
-    background-image: url(../images/wine.jpg);
+    background-image: url(../images/wine.jpg) ;
     height: 1200px;
     background-size: cover;
-    filter: grayscale(80%);
+    /*filter: brightness(10%);*/
     /*-webkit-filter: contrast(30%);*/
-    /*-webkit-filter: brightness(30%);*/
+    /*filter: brightness(30%);*/
 
 
 
@@ -74,5 +74,19 @@ footer {
     text-align: center;
     padding: 5px;
 
+}
+
+
+/* Wiens */
+.mein_col{
+    height: 1100px;
+    border-radius: 15%;
+    background-color: rgba(68, 2, 9, 0.7);
+}
+
+h3, h5{
+    color: white;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
