@@ -21,11 +21,11 @@ class Category(models.Model):
 
 class Product(models.Model):
     """Product"""
-    PACKAGE_CHOICES = (
+    PACKAGE_CHOICES = [
         ("B", "Без упаковки"),
         ("P", "Подарочная"),
         ("W", "С бокалом"),
-    )
+    ]
 
     title = models.CharField(max_length=255, verbose_name="Название товара")
     title_rus = models.CharField(max_length=255,
@@ -64,19 +64,19 @@ class Product(models.Model):
 class Wine(Product):
     """Wine"""
 
-    COLOR_TYPE = (
+    COLOR_TYPE = [
         ("W", "Белое"),
         ("R", "Красное"),
         ("P", "Розовое"),
         ("G", "Зеленое"),
-    )
+    ]
 
-    SUGAR_AMOUNT = (
-        ("S", "Сладкое"),
-        ("SS", "Полусладкое"),
-        ("SD", "Полусухое"),
-        ("D", "Сухое"),
-    )
+    SUGAR_AMOUNT = [
+        ("S", "сладкое"),
+        ("SS", "полусладкое"),
+        ("SD", "полусухое"),
+        ("D", "сухое"),
+    ]
 
     color = models.CharField(max_length=1, choices=COLOR_TYPE, default="W")
     sugar = models.CharField(max_length=2, choices=SUGAR_AMOUNT, default="S")
