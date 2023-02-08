@@ -10,6 +10,8 @@ a.text {
   text-decoration: white;
   color: #ffffff;
 }
+.dropdown:hover .dropdown-menu {display: block;}
+
 
 main {
     background-image: url(../images/wine.jpg);
@@ -72,7 +74,7 @@ main {
 
 }
 
-.dropdown:hover .dropdown-menu {display: block;}
+
 
 #ramka{
     margin-right: 150px;

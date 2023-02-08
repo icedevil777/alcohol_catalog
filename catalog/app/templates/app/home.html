@@ -72,10 +72,10 @@
             <div class="col-sm-6 col-md-3 col-lg-2 third-head-col">
                 <div class="dropdown"
                      style="position: absolute; margin-left: 6%;">
-                    <a class="text dropbtn" href="{% url '' %}" role="button"
+                    <a class="text dropbtn" href="{% url 'app:wine' %}" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">Вино</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Белое сухое</a></li>
+                        <li><a class="dropdown-item" href="{% url 'app:wine' %}">Белое сухое</a></li>
                         <li><a class="dropdown-item" href="#">Красное полусладкое</a></li>
                         <li><a class="dropdown-item" href="#">Крепленое</a></li>
                     </ul>
