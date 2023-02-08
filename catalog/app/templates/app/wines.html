@@ -24,12 +24,11 @@
                     </div>
                     <div class="col-10 border" style="height: 1000px">
                         <div class="row border" style="height: 300px">
-                                   {% for wine in object_list %}
-                                       <li>{{ wine }}</li>
-                                   {% endfor %}
+                           {% for wine in object_list %}
+                               <li>{{ wine.title}}</li>
+                               <img src="{{ wine.image.url }}" alt="картинка" style="width: 8%; height: 50%">
+                           {% endfor %}
                         </div>
-                        <div class="row border" style="height: 300px"></div>
-                        <div class="row border" style="height: 300px"></div>
                     </div>
                 </div>
             </div>
