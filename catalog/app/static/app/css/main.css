@@ -67,25 +67,12 @@ main {
 
 }
 
-
-.bar {
-    border: 1px solid #868484;
-    height: 400px;
-
-}
-
-
-
-#ramka{
-    margin-right: 150px;
-    background-image: url(../images/fotor_png.png);
-    background-size: inherit;
-}
-
-
 footer {
     background: url(../images/second_head.png);
     background-size: cover;
+    color: #1e0000;
+    text-align: center;
+    padding: 5px;
 
 }
 
