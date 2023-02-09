@@ -12,3 +12,17 @@ const third_head = {
 }
 
 Vue.createApp(third_head).mount('#third_head')
+
+
+const wine_api = {
+  data() {
+    return {
+      message: 'Привет, Vue.js!'
+    }
+  },
+  methods: {
+    wine_api() {
+        console.log('work')
+    }
+  }
+}
