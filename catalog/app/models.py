@@ -72,10 +72,10 @@ class Wine(Product):
     ]
 
     SUGAR_AMOUNT = [
-        ("S", "сладкое"),
-        ("SS", "полусладкое"),
-        ("SD", "полусухое"),
-        ("D", "сухое"),
+        ("S", "Сладкое"),
+        ("SS", "Полусладкое"),
+        ("SD", "Полусухое"),
+        ("D", "Сухое"),
     ]
 
     color = models.CharField(max_length=1, choices=COLOR_TYPE, default="W")
