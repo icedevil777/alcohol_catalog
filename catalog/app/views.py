@@ -37,7 +37,8 @@ class WinesView(View):
         content = self.get_content()
         print("data.getlist('color')", data)
 
-        if data['wine_search']:
+        # if data['wine_search']:
+        if data.get('wine_search'):
             queryset = content['wines'].filter(
                 title__icontains=str(data['wine_search']))
             content['wines'] = queryset

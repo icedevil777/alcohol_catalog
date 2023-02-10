@@ -19,10 +19,11 @@ def update_colors_checkboxes(data):
     """
     for title in data:
         color_obj = ColorType.objects.get(title=title)
-        if color_obj.is_checked:
-            color_obj.is_checked = False
-        else:
-            color_obj.is_checked = True
+        color_obj.is_checked = True
+        # if color_obj.is_checked:
+        #     color_obj.is_checked = False
+        # else:
+        #     color_obj.is_checked = True
         color_obj.save()
 
 
@@ -33,10 +34,11 @@ def update_sugars_checkboxes(data):
     """
     for title in data:
         sugar_obj = SugarAmount.objects.get(title=title)
-        if sugar_obj.is_checked:
-            sugar_obj.is_checked = False
-        else:
-            sugar_obj.is_checked = True
+        sugar_obj.is_checked = True
+        # if sugar_obj.is_checked:
+        #     sugar_obj.is_checked = False
+        # else:
+        #     sugar_obj.is_checked = True
         sugar_obj.save()
 
 

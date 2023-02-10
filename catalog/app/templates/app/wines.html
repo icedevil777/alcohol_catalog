@@ -33,6 +33,7 @@
                             <h6>Содержание сахара</h6>
 
                                 {% for sugar in sugars %}
+                                     {{ sugar.is_checked }}
                                          <div class="item-name flex">
                                         <input
                                             class="form-check-input"
@@ -41,7 +42,7 @@
                                             value="{{ sugar }}"
 {#                                            onchange="send_options(value)"#}
                                             {% if sugar.is_checked %}
-                                                checked="{{ sugar }}"
+                                                checked="checked"
                                             {% endif %}
                                         >&nbsp<a style="color: white;">{{ sugar }}</a><br>
                                     </div>
@@ -55,14 +56,14 @@
                                     {{ color.is_checked }}
                                     <div class="item-name flex">
                                         <input
+                                        id="checked"
                                             class="form-check-input"
                                             type="checkbox"
                                             name="color"
-                                            value=""
-                                            onchange="send_options(checked)"
-                                            checked="checked"
-                                            {% if not color.is_checked %}
-                                                checked=""
+                                            value="{{ color }}"
+{#                                            onchange="send_options(target.checked);"#}
+                                            {% if color.is_checked %}
+                                                checked="checked"
                                             {% endif %}
                                         >&nbsp;<a style="color: white;">{{ color }}</a><br>
                                     </div>
