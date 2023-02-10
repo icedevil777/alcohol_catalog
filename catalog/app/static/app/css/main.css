@@ -17,7 +17,6 @@ main {
     background-image: url(../images/wine.jpg);
     height: 1200px;
     background-size: cover;
-    margin-bottom: 10%;
     /*filter: brightness(10%);*/
     /*-webkit-filter: contrast(30%);*/
     /*filter: brightness(30%);*/

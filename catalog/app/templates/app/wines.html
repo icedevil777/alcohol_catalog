@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12 mein_col justify-content-center text-center border">
                 <form method="post">
-                <div class="row head-row">
+                <div class="row head-row mb-5 mt-5">
                     <div class="col-6">
                         <h3>Каталог вина</h3>
                     </div>
@@ -33,7 +33,6 @@
                             <h6>Содержание сахара</h6>
 
                                 {% for sugar in sugars %}
-                                     {{ sugar.is_checked }}
                                          <div class="item-name flex">
                                         <input
                                             class="form-check-input"
@@ -53,7 +52,6 @@
                             <h6>Цвет вина</h6>
 
                                 {% for color in colors %}
-                                    {{ color.is_checked }}
                                     <div class="item-name flex">
                                         <input
                                         id="checked"
