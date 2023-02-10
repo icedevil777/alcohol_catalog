@@ -1,0 +1,176 @@
+[
+{
+  "model": "app.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$DkCWD5TqG8zI3p7SSowtoF$tFnHHyoU2cpoojpMtDG2RetYoMqZAGOg2mozUchZ6W0=",
+    "last_login": "2023-02-10T09:08:17.866Z",
+    "is_superuser": true,
+    "username": "icedevil777",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-02-10T07:06:21.948Z",
+    "email": "icedevil777@mail.ru",
+    "first_name": "",
+    "last_name": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "app.colortype",
+  "pk": 1,
+  "fields": {
+    "title": "Белое",
+    "is_checked": false
+  }
+},
+{
+  "model": "app.colortype",
+  "pk": 2,
+  "fields": {
+    "title": "Красное",
+    "is_checked": false
+  }
+},
+{
+  "model": "app.colortype",
+  "pk": 3,
+  "fields": {
+    "title": "Розовое",
+    "is_checked": false
+  }
+},
+{
+  "model": "app.sugaramount",
+  "pk": 1,
+  "fields": {
+    "title": "Сладкое",
+    "is_checked": false
+  }
+},
+{
+  "model": "app.sugaramount",
+  "pk": 2,
+  "fields": {
+    "title": "Полусладкое",
+    "is_checked": true
+  }
+},
+{
+  "model": "app.sugaramount",
+  "pk": 3,
+  "fields": {
+    "title": "Сухое",
+    "is_checked": false
+  }
+},
+{
+  "model": "app.sugaramount",
+  "pk": 4,
+  "fields": {
+    "title": "Полусухое",
+    "is_checked": true
+  }
+},
+{
+  "model": "app.wine",
+  "pk": 1,
+  "fields": {
+    "title": "Follow the white rabbit",
+    "title_rus": "Гарнача",
+    "image": "wines/Cabernet_mPZkmkX.png",
+    "price": "589.00",
+    "country": "Испания",
+    "region_manufacture": "Калатаюд",
+    "fortress": "14.00",
+    "manufacturer": "San Gregorio Sociedad",
+    "volume": "0.700",
+    "packaging": "B",
+    "brand": "Бренд",
+    "description": "Описание",
+    "stock": true,
+    "created_date": "2023-02-10",
+    "updated_date": "2023-02-10",
+    "color": 2,
+    "sugar": 3,
+    "grape_variety": "Сорт",
+    "recommended_temperature": "14.00"
+  }
+},
+{
+  "model": "app.wine",
+  "pk": 2,
+  "fields": {
+    "title": "Muller Thurgau",
+    "title_rus": "Миллер",
+    "image": "wines/Cabernet_3lDSgrE.png",
+    "price": "800.00",
+    "country": "Германия",
+    "region_manufacture": "Германия",
+    "fortress": "18.00",
+    "manufacturer": "Германия",
+    "volume": "1.000",
+    "packaging": "B",
+    "brand": "Германия",
+    "description": "Германия",
+    "stock": false,
+    "created_date": "2023-02-10",
+    "updated_date": "2023-02-10",
+    "color": 1,
+    "sugar": 3,
+    "grape_variety": "Германия",
+    "recommended_temperature": "15.00"
+  }
+},
+{
+  "model": "app.wine",
+  "pk": 3,
+  "fields": {
+    "title": "Maybach Sauvignon",
+    "title_rus": "Майбач",
+    "image": "wines/Cabernet_mPZkmkX_sPKBPih.png",
+    "price": "1200.00",
+    "country": "Германия",
+    "region_manufacture": "Германия",
+    "fortress": "14.00",
+    "manufacturer": "Германия",
+    "volume": "0.700",
+    "packaging": "B",
+    "brand": "Германия",
+    "description": "Германия",
+    "stock": true,
+    "created_date": "2023-02-10",
+    "updated_date": "2023-02-10",
+    "color": 1,
+    "sugar": 2,
+    "grape_variety": "Германия",
+    "recommended_temperature": "16.00"
+  }
+},
+{
+  "model": "app.wine",
+  "pk": 4,
+  "fields": {
+    "title": "Rose d'Anjou Elysis",
+    "title_rus": "Розе",
+    "image": "wines/chianti_yFED2nm.png",
+    "price": "900.00",
+    "country": "Франция",
+    "region_manufacture": "Франция",
+    "fortress": "15.00",
+    "manufacturer": "Франция",
+    "volume": "0.700",
+    "packaging": "B",
+    "brand": "Франция",
+    "description": "Франция",
+    "stock": false,
+    "created_date": "2023-02-10",
+    "updated_date": "2023-02-10",
+    "color": 3,
+    "sugar": 2,
+    "grape_variety": "Франция",
+    "recommended_temperature": "12.00"
+  }
+}
+]
