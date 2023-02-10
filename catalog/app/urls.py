@@ -8,4 +8,5 @@ app_name = "app"
 urlpatterns = [
 	path('', views.home, name='home'),
 	path('wines/', csrf_exempt(views.WinesView.as_view()), name='wines'),
+	path('beers/', csrf_exempt(views.BeersView.as_view()), name='beers'),
 ]

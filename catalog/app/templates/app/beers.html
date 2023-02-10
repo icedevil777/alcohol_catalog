@@ -12,7 +12,7 @@
                 <form method="post">
                 <div class="row head-row">
                     <div class="col-6">
-                        <h3>Каталог вина</h3>
+                        <h3>Каталог пива</h3>
                     </div>
                     <div class="col-5">
                         <input
@@ -23,45 +23,25 @@
                             name="wine_search"
                             value=""
                             style="width: 60%; margin: 1% auto;"
-{#                            onkeyup="send_options(value)"#}
+                            onkeyup="send_options(value)"
                         >
                     </div>
                 </div>
                 <div class="row body-row">
                     <div class="col-2" style="text-align: left; margin-left: 10%;">
                             <div class="form-check-sugar">
-                            <h6>Содержание сахара</h6>
-
-                                {% for sugar in sugars %}
-                                         <div class="item-name flex">
-                                        <input
-                                            class="form-check-input"
-                                            type="checkbox"
-                                            name="sugar"
-                                            value="{{ sugar }}"
-{#                                            onchange="send_options(value)"#}
-                                            {% if sugar.is_checked %}
-                                                checked="{{ sugar }}"
-                                            {% endif %}
-                                        >&nbsp<a style="color: white;">{{ sugar }}</a><br>
-                                    </div>
-                                {% endfor %}
-                            </div>
-
-                            <div class="form-check-color" style="margin-top: 5%;">
-                            <h6>Цвет вина</h6>
-                                {% for color in colors %}
+                            <h6>Тип обработки</h6>
+                                {% for type in types %}
                                     <div class="item-name flex">
                                         <input
                                             class="form-check-input"
                                             type="checkbox"
-                                            name="color"
-                                            value="{{ color }}"
-{#                                            onchange="send_options()"#}
-                                            {% if color.is_checked %}
-                                                checked="{{ color }}"
+                                            value=""
+                                            onchange="send_options()"
+                                            {% if employment_type.name_for_form in fs.keys %}
+                                            checked=""
                                             {% endif %}
-                                        >&nbsp;<a style="color: white;">{{ color }}</a><br>
+                                        >&nbsp<a style="color: white;">{{ type.1 }}</a><br>
                                     </div>
                                 {% endfor %}
                             </div>
@@ -69,19 +49,18 @@
                             <h6>Цена от:</h6>
                             <div class="item-name" style="width: 65%;">
                                 <input
-{#                                    onchange="send_options()"#}
+                                    onchange="send_options()"
                                     type="range"
                                     class="form-range"
                                     id="range"
-                                    name="price"
-                                    value="value"
+                                    name="send_price"
+                                    value="100"
                                     min="0"
-                                    max="1500"
+                                    max="10000"
                                 />
                                 <output type="text" name="" id="output" style="width: 120px; color: white"></output>
                                 <script src="{% static 'app/js/price.js' %}"></script>
                             </div>
-                                <button type="submit">Применить</button>
                             </div>
 
                     </div>
@@ -92,7 +71,7 @@
                                <div class="col-3 border mb-2 mini_content_col pt-4" style="height: 200px;">
                                <a>{{ wine.title }}</a><br>
                                <a><img src="{{ wine.image.url }}" alt="картинка" style="width: 7%; height: 40%"></a><br>
-                               <a>{{ wine.sugar.title }} {{ wine.color.title }} </a><br>
+                               <a>{{ wine.get_color_display }} {{ wine.get_sugar_display }} </a><br>
                                <a>{{ wine.price }} руб. </a>
                                </div>
                            {% endfor %}

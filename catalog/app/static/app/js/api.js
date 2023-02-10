@@ -10,5 +10,4 @@ async function send_options(data) {
         },
         body: JSON.stringify(data)
     });
-
 }

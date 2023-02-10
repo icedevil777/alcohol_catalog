@@ -2,8 +2,11 @@ from django.http import HttpResponse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView
-from .models import Wine
+from .models import Wine, Beer, ColorType, SugarAmount
 from django.shortcuts import render
+
+from .utils import update_colors_checkboxes, update_sugar_checkboxes, \
+    set_false_all_checkboxes
 
 
 def home(request):
@@ -14,27 +17,54 @@ class WinesView(View):
     """Wine objects"""
 
     def get_content(self):
+
         queryset = Wine.objects.all()
-        sugars = Wine.SUGAR_AMOUNT
-        colors = Wine.COLOR_TYPE
+        colors = ColorType.objects.all()
+        sugars = SugarAmount.objects.all()
+
+
         return {
             'wines': queryset,
             'colors': colors,
-            'sugars': sugars
+            'sugars': sugars,
         }
 
     def get(self, request):
-        return render(request, 'app/wines.html', self.get_content())
+        content = self.get_content()
+        set_false_all_checkboxes(content)
+        return render(request, 'app/wines.html', content)
 
     @csrf_exempt
     def post(self, request):
+        data = request.POST
         content = self.get_content()
-        request_title = request.POST.get('wine_search')
-        if request_title:
-            queryset = Wine.objects.filter(title__icontains=str(request_title))
+
+        if data.get('color'):
+            queryset = Wine.objects.filter(
+                title__icontains=str(data['wine_search']))
+            update_colors_checkboxes(data.getlist('color'))
+
+        if data.get('sugar'):
+            update_sugar_checkboxes(data.getlist('sugar'))
+
+        if data['wine_search']:
+            queryset = Wine.objects.filter(
+                title__icontains=str(data['wine_search']))
             content['wines'] = queryset
+
         return render(request, 'app/wines.html', content)
 
+
+class BeersView(ListView):
+    """Wine objects"""
+    template_name = 'app/beers.html'
+    context_object_name = 'beers'
+    queryset = Beer.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['types'] = Beer.TYPE
+        return context
 
 # class WinesView(ListView):
 #     """Wine objects"""

@@ -56,30 +56,41 @@ class Product(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ['title']
 
     def __str__(self):
         return self.title_rus
 
 
+class ColorType(models.Model):
+    title = models.CharField(max_length=32)
+    is_checked = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['title']
+
+    def __str__(self):
+        return self.title
+
+
+class SugarAmount(models.Model):
+    title = models.CharField(max_length=32)
+    is_checked = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['title']
+
+    def __str__(self):
+        return self.title
+
+
 class Wine(Product):
     """Wine"""
 
-    COLOR_TYPE = [
-        ("W", "Белое"),
-        ("R", "Красное"),
-        ("P", "Розовое"),
-        ("G", "Зеленое"),
-    ]
-
-    SUGAR_AMOUNT = [
-        ("S", "Сладкое"),
-        ("SS", "Полусладкое"),
-        ("SD", "Полусухое"),
-        ("D", "Сухое"),
-    ]
-
-    color = models.CharField(max_length=1, choices=COLOR_TYPE, default="W")
-    sugar = models.CharField(max_length=2, choices=SUGAR_AMOUNT, default="S")
+    color = models.ForeignKey(ColorType, on_delete=models.CASCADE,
+                              verbose_name="color_type",)
+    sugar = models.ForeignKey(SugarAmount, on_delete=models.CASCADE,
+                              verbose_name="sugar_amount",)
     grape_variety = models.CharField(
         max_length=50,
         verbose_name="Сорт винограда"
@@ -89,6 +100,19 @@ class Wine(Product):
         decimal_places=2,
         verbose_name="Температура подачи"
     )
+
+    def __str__(self):
+        return self.title_rus
+
+
+class Beer(Product):
+    """Wine"""
+    TYPE = [
+        ("Y", "Фильтрованное"),
+        ("N", "Не фильтрованное"),
+        ("P", "Пастеризованное"),
+    ]
+    type = models.CharField(max_length=1, choices=TYPE, default="Y")
 
     def __str__(self):
         return self.title_rus
