@@ -5,8 +5,8 @@ from django.views.generic import ListView
 from .models import Wine, Beer, ColorType, SugarAmount
 from django.shortcuts import render
 
-from .utils import update_colors_checkboxes, update_sugar_checkboxes, \
-    set_false_all_checkboxes
+from .utils import update_colors_checkboxes, update_sugars_checkboxes, \
+    set_false_all_checkboxes, create_color_list_id, create_sugar_list_id
 
 
 def home(request):
@@ -17,12 +17,9 @@ class WinesView(View):
     """Wine objects"""
 
     def get_content(self):
-
         queryset = Wine.objects.all()
         colors = ColorType.objects.all()
         sugars = SugarAmount.objects.all()
-
-
         return {
             'wines': queryset,
             'colors': colors,
@@ -38,19 +35,30 @@ class WinesView(View):
     def post(self, request):
         data = request.POST
         content = self.get_content()
+        print("data.getlist('color')", data)
+
+        if data['wine_search']:
+            queryset = content['wines'].filter(
+                title__icontains=str(data['wine_search']))
+            content['wines'] = queryset
 
         if data.get('color'):
-            queryset = Wine.objects.filter(
-                title__icontains=str(data['wine_search']))
+            list_color_id = create_color_list_id(data.getlist('color'))
+            content['wines'] = content['wines'].filter(
+                color_id__in=list_color_id)
             update_colors_checkboxes(data.getlist('color'))
 
         if data.get('sugar'):
-            update_sugar_checkboxes(data.getlist('sugar'))
+            list_sugar_id = create_sugar_list_id(data.getlist('sugar'))
+            content['wines'] = content['wines'].filter(
+                sugar_id__in=list_sugar_id)
+            update_sugars_checkboxes(data.getlist('sugar'))
 
-        if data['wine_search']:
-            queryset = Wine.objects.filter(
-                title__icontains=str(data['wine_search']))
-            content['wines'] = queryset
+        # if data['sort_by']:
+        #     if data['sort_by'] == 'first_new':
+        #         content['wines'] = content['wines'].order_by('-created_at')
+        #     if data['sort_by'] == 'first_old':
+        #         content['wines'] = content['wines'].order_by('created_at')
 
         return render(request, 'app/wines.html', content)
 
@@ -65,27 +73,3 @@ class BeersView(ListView):
         context = super().get_context_data(**kwargs)
         context['types'] = Beer.TYPE
         return context
-
-# class WinesView(ListView):
-#     """Wine objects"""
-#     template_name = 'app/wines.html'
-#     context_object_name = 'wines'
-#     # queryset = Wine.objects.all()
-#     title = None
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['sugars'] = Wine.SUGAR_AMOUNT
-#         context['colors'] = Wine.COLOR_TYPE
-#         return context
-#
-#     def get_queryset(self, **kwargs):
-#         title1 = self.title
-#         print('title1', title1)
-#         queryset = Wine.objects.all()
-#         return queryset
-#
-#     @csrf_exempt
-#     def post(self, request):
-#         self.title = request.body.decode('utf-8')
-#         return HttpResponse(self.queryset)

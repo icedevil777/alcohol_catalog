@@ -50,16 +50,19 @@
 
                             <div class="form-check-color" style="margin-top: 5%;">
                             <h6>Цвет вина</h6>
+
                                 {% for color in colors %}
+                                    {{ color.is_checked }}
                                     <div class="item-name flex">
                                         <input
                                             class="form-check-input"
                                             type="checkbox"
                                             name="color"
-                                            value="{{ color }}"
-{#                                            onchange="send_options()"#}
-                                            {% if color.is_checked %}
-                                                checked="{{ color }}"
+                                            value=""
+                                            onchange="send_options(checked)"
+                                            checked="checked"
+                                            {% if not color.is_checked %}
+                                                checked=""
                                             {% endif %}
                                         >&nbsp;<a style="color: white;">{{ color }}</a><br>
                                     </div>
@@ -74,7 +77,7 @@
                                     class="form-range"
                                     id="range"
                                     name="price"
-                                    value="value"
+                                    value="0"
                                     min="0"
                                     max="1500"
                                 />

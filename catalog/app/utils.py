@@ -1,4 +1,4 @@
-from .models import ColorType, SugarAmount
+from .models import ColorType, SugarAmount, Wine
 
 
 def set_false_all_checkboxes(content):
@@ -19,16 +19,38 @@ def update_colors_checkboxes(data):
     """
     for title in data:
         color_obj = ColorType.objects.get(title=title)
-        color_obj.is_checked = True
+        if color_obj.is_checked:
+            color_obj.is_checked = False
+        else:
+            color_obj.is_checked = True
         color_obj.save()
 
 
-def update_sugar_checkboxes(data):
+def update_sugars_checkboxes(data):
     """
     Функция обновляет выбранные
     чек-боксы содержания сахара
     """
     for title in data:
-        color_obj = SugarAmount.objects.get(title=title)
-        color_obj.is_checked = True
-        color_obj.save()
+        sugar_obj = SugarAmount.objects.get(title=title)
+        if sugar_obj.is_checked:
+            sugar_obj.is_checked = False
+        else:
+            sugar_obj.is_checked = True
+        sugar_obj.save()
+
+
+def create_color_list_id(title_list):
+    """Преобразует список title в список id"""
+    list_id: list = []
+    for title in title_list:
+        list_id.append(ColorType.objects.get(title=title).id)
+    return list_id
+
+
+def create_sugar_list_id(title_list):
+    """Преобразует список title в список id"""
+    list_id: list = []
+    for title in title_list:
+        list_id.append(SugarAmount.objects.get(title=title).id)
+    return list_id

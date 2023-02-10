@@ -102,7 +102,7 @@ class Wine(Product):
     )
 
     def __str__(self):
-        return self.title_rus
+        return self.title
 
 
 class Beer(Product):
