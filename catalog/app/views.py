@@ -2,12 +2,13 @@ from django.http import HttpResponse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView
-from .models import Wine, Beer, ColorType, SugarAmount
+from .models import Wine, Beer, ColorType, SugarAmount, Sorting
 from django.shortcuts import render
 
 from .utils import update_colors_checkboxes, update_sugars_checkboxes, \
     set_false_all_checkboxes, create_color_list_id, create_sugar_list_id, \
-    set_false_colors_checkboxes, set_false_sugars_checkboxes
+    set_false_colors_checkboxes, set_false_sugars_checkboxes, \
+    get_str_order_by_id
 
 
 def home(request):
@@ -21,10 +22,12 @@ class WinesView(View):
         queryset = Wine.objects.all()
         colors = ColorType.objects.all()
         sugars = SugarAmount.objects.all()
+        sorting = Sorting.objects.all()
         return {
             'wines': queryset,
             'colors': colors,
             'sugars': sugars,
+            'sorting': sorting,
         }
 
     def get(self, request):
@@ -63,6 +66,10 @@ class WinesView(View):
                 price__gt=data.get('price'))
             content.update({'input_price': data.get('price')})
 
+        if data.get('order'):
+            order = get_str_order_by_id(data.get('order'))
+            content['wines'] = content['wines'].order_by(order)
+            content.update({'order_input': int(data['order'])})
         return render(request, 'app/wines.html', content)
 
 

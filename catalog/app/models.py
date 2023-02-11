@@ -11,9 +11,13 @@ class User(AbstractUser):
         return self.email
 
 
-class Category(models.Model):
-    """Category"""
-    title = models.CharField(max_length=255, verbose_name="Категория")
+class Sorting(models.Model):
+    """Sorting"""
+    title = models.CharField(max_length=255, verbose_name="Сортировка")
+    value = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        ordering = ['title']
 
     def __str__(self):
         return self.title
@@ -30,10 +34,11 @@ class Product(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название товара")
     title_rus = models.CharField(max_length=255,
                                  verbose_name="Название товара на русском")
-    image = models.ImageField(upload_to='wines', verbose_name="Фото", null=True, blank=True)
-    # categories = models.ForeignKey(Category, on_delete=models.CASCADE,
-    #                                verbose_name="Категория",
-    #                                null=True, blank=True)
+    image = models.ImageField(upload_to='wines', verbose_name="Фото",
+                              null=True, blank=True)
+    # sorting = models.ForeignKey(Sorting, on_delete=models.CASCADE,
+    #                           verbose_name="Категория",
+    #                           null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2,
                                 verbose_name="Цена")
     country = models.CharField(max_length=50, verbose_name="Страна")
@@ -88,9 +93,9 @@ class Wine(Product):
     """Wine"""
 
     color = models.ForeignKey(ColorType, on_delete=models.CASCADE,
-                              verbose_name="color_type",)
+                              verbose_name="color_type", )
     sugar = models.ForeignKey(SugarAmount, on_delete=models.CASCADE,
-                              verbose_name="sugar_amount",)
+                              verbose_name="sugar_amount", )
     grape_variety = models.CharField(
         max_length=50,
         verbose_name="Сорт винограда"

@@ -11,8 +11,19 @@
             <div class="col-12 mein_col justify-content-center text-center border">
                 <form method="post">
                 <div class="row head-row mb-5 mt-5">
-                    <div class="col-6">
-                        <h3>Каталог вина</h3>
+                    <div class="col-4">
+                        <h3>Каталог вина</h3> {{ order_input }}
+                    </div>
+                    <div class="col-2" style="width: 25%;">
+                        <select class="form-select" name="order" aria-label="Default select example">
+{#                            <option selected>Сортировка</option>#}
+                            {% for sel in sorting %}
+                                <option {% if sel.id == order_input %} selected {% endif %} value="{{ sel.id }}">
+                                    {{ sel.title }}
+                                </option>
+                            {% endfor %}
+
+                        </select>
                     </div>
                     <div class="col-5">
                         <input
@@ -22,7 +33,7 @@
                             placeholder="Что хотите найти?"
                             name="wine_search"
                             value="{{ search_input }}"
-                            style="width: 60%; margin: 1% auto;"
+                            style="width: 60%;"
 {#                            onkeyup="send_options(value)"#}
                         >
                     </div>
@@ -30,7 +41,7 @@
                 <div class="row body-row">
                     <div class="col-2" style="text-align: left; margin-left: 10%;">
                             <div class="form-check-sugar">
-                            <h6>Содержание сахара</h6>
+                            <h6 style="margin-bottom: 5%;">Содержание сахара</h6>
 
                                 {% for sugar in sugars %}
                                          <div class="item-name flex">
@@ -49,7 +60,7 @@
                             </div>
 
                             <div class="form-check-color" style="margin-top: 5%;">
-                            <h6>Цвет вина</h6>
+                            <h6 style="margin-bottom: 5%;">Цвет вина</h6>
                                 {% for color in colors %}
                                     <div class="item-name flex">
                                         <input
@@ -67,7 +78,7 @@
                                 {% endfor %}
                             </div>
                             <div class="form-check-sugar" style="margin-top: 5%;">
-                            <h6>Цена от:</h6>
+                            <h6 style="margin-bottom: 5%;">Цена от:</h6>
                             <div class="item-name" style="width: 65%;">
                                 <input
 {#                                    onchange="send_options()"#}
@@ -86,7 +97,7 @@
                                 <output type="text" name="out_price" id="output" style="width: 120px; color: white"></output>
                                 <script src="{% static 'app/js/price.js' %}"></script>
                             </div>
-                                <button type="submit">Применить</button>
+                                <button class="btn btn-primary" type="submit">Применить</button>
                             </div>
 
                     </div>

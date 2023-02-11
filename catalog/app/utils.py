@@ -36,20 +36,14 @@ def update_colors_checkboxes(data):
     и False у не чекнутых.
     """
     color_obj = ColorType.objects.all()
-    print('data', data)
-    print('all_obj', color_obj)
     for item in color_obj:
-        print('item', item)
         for title in data:
-            print(' title', title)
             if title == item.title:
                 item.is_checked = True
-                print(item, 'True')
                 item.save()
                 break
             else:
                 item.is_checked = False
-                print(item, 'False')
                 item.save()
 
 
@@ -60,20 +54,14 @@ def update_sugars_checkboxes(data):
     и False у не чекнутых.
     """
     sugar_obj = SugarAmount.objects.all()
-    print('data', data)
-    print('all_obj', sugar_obj)
     for item in sugar_obj:
-        print('item', item)
         for title in data:
-            print(' title', title)
             if title == item.title:
                 item.is_checked = True
-                print(item, 'True')
                 item.save()
                 break
             else:
                 item.is_checked = False
-                print(item, 'False')
                 item.save()
 
 
@@ -91,3 +79,12 @@ def create_sugar_list_id(title_list):
     for title in title_list:
         list_id.append(SugarAmount.objects.get(title=title).id)
     return list_id
+
+
+def get_str_order_by_id(param):
+    """Принимает id и формирует строку"""
+    if int(param) == 1:
+        return 'price'
+    if int(param) == 2:
+        return '-price'
+    return 'title'

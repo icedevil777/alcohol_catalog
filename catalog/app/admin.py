@@ -2,11 +2,11 @@ from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources
 
-from .models import Wine, Category, Beer, SugarAmount, ColorType
+from .models import Wine, Beer, SugarAmount, ColorType, Sorting
 
 admin.site.register(SugarAmount)
 admin.site.register(ColorType)
-admin.site.register(Category)
+admin.site.register(Sorting)
 
 
 @admin.register(Wine)
