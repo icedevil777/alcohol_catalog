@@ -21,7 +21,7 @@
                             class="form-control"
                             placeholder="Что хотите найти?"
                             name="wine_search"
-                            value=""
+                            value="{{ search_input }}"
                             style="width: 60%; margin: 1% auto;"
 {#                            onkeyup="send_options(value)"#}
                         >
@@ -52,6 +52,7 @@
                             <h6>Цвет вина</h6>
 
                                 {% for color in colors %}
+                                    {{ color.is_checked }}
                                     <div class="item-name flex">
                                         <input
                                         id="checked"

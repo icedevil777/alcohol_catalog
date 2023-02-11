@@ -6,7 +6,8 @@ from .models import Wine, Beer, ColorType, SugarAmount
 from django.shortcuts import render
 
 from .utils import update_colors_checkboxes, update_sugars_checkboxes, \
-    set_false_all_checkboxes, create_color_list_id, create_sugar_list_id
+    set_false_all_checkboxes, create_color_list_id, create_sugar_list_id, \
+    set_false_colors_checkboxes, set_false_sugars_checkboxes
 
 
 def home(request):
@@ -36,23 +37,29 @@ class WinesView(View):
         data = request.POST
         content = self.get_content()
 
-        if data.get('wine_search'):
-            queryset = content['wines'].filter(
-                title__icontains=str(data['wine_search']))
-            content['wines'] = queryset
-
         if data.get('color'):
             list_color_id = create_color_list_id(data.getlist('color'))
             content['wines'] = content['wines'].filter(
                 color_id__in=list_color_id)
             update_colors_checkboxes(data.getlist('color'))
+        else:
+            set_false_colors_checkboxes(content)
 
         if data.get('sugar'):
             list_sugar_id = create_sugar_list_id(data.getlist('sugar'))
             content['wines'] = content['wines'].filter(
                 sugar_id__in=list_sugar_id)
             update_sugars_checkboxes(data.getlist('sugar'))
+        else:
+            set_false_sugars_checkboxes(content)
 
+        if data.get('wine_search'):
+            content['wines'] = content['wines'].filter(
+                title__icontains=str(data['wine_search']))
+            content.update({'search_input': data['wine_search']})
+
+
+            # content['wines'] = queryset
         # if data['sort_by']:
         #     if data['sort_by'] == 'first_new':
         #         content['wines'] = content['wines'].order_by('-created_at')
