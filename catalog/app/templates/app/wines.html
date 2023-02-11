@@ -50,9 +50,7 @@
 
                             <div class="form-check-color" style="margin-top: 5%;">
                             <h6>Цвет вина</h6>
-
                                 {% for color in colors %}
-                                    {{ color.is_checked }}
                                     <div class="item-name flex">
                                         <input
                                         id="checked"
@@ -77,11 +75,15 @@
                                     class="form-range"
                                     id="range"
                                     name="price"
-                                    value="0"
+                                    {% if input_price %}
+                                        value="{{ input_price }}"
+                                    {% else %}
+                                        value="0"
+                                    {% endif %}
                                     min="0"
                                     max="1500"
                                 />
-                                <output type="text" name="" id="output" style="width: 120px; color: white"></output>
+                                <output type="text" name="out_price" id="output" style="width: 120px; color: white"></output>
                                 <script src="{% static 'app/js/price.js' %}"></script>
                             </div>
                                 <button type="submit">Применить</button>
@@ -112,31 +114,3 @@
 <script src="{% static 'app/js/api.js' %}"></script>
 {% endblock %}
 
-
-
-
-{#                <div class="row">#}
-{#                    <div class="col-2 border" style="height: 1000px">#}
-{#                        <div class="row border" style="height: 300px">#}
-{#                            <h5>Цена</h5>#}
-{#                        </div>#}
-{#                        <div class="row border" style="height: 300px">#}
-{#                            <h5>Цвет</h5>#}
-{#                        </div>#}
-{#                        <div class="row border" style="height: 300px">#}
-{#                            <h5>Содержание сахара</h5>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="col-10 border" style="height: 1000px">#}
-{#                        <div class="row">#}
-{#                           {% for wine in wines %}#}
-{#                               <div class="col-4 border mb-2" style="height: 200px;">#}
-{#                               <p><img src="{{ wine.image.url }}" alt="картинка" style="width: 7%; height: 60%"></p>#}
-{#                               <p>{{ wine.title }}</p>#}
-{#                               <p>{{ wine.title_rus }}</p>#}
-{#                               <p>{{ wine.get_color_display }} {{ wine.get_sugar_display }} </p>#}
-{#                               </div>#}
-{#                           {% endfor %}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}

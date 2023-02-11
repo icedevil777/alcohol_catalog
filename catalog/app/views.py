@@ -58,13 +58,10 @@ class WinesView(View):
                 title__icontains=str(data['wine_search']))
             content.update({'search_input': data['wine_search']})
 
-
-            # content['wines'] = queryset
-        # if data['sort_by']:
-        #     if data['sort_by'] == 'first_new':
-        #         content['wines'] = content['wines'].order_by('-created_at')
-        #     if data['sort_by'] == 'first_old':
-        #         content['wines'] = content['wines'].order_by('created_at')
+        if data.get('price'):
+            content['wines'] = content['wines'].filter(
+                price__gt=data.get('price'))
+            content.update({'input_price': data.get('price')})
 
         return render(request, 'app/wines.html', content)
 
