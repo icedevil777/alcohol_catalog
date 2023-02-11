@@ -12,7 +12,7 @@
                 <form method="post">
                 <div class="row head-row mb-5 mt-5">
                     <div class="col-4">
-                        <h3>Каталог вина</h3> {{ order_input }}
+                        <h3>Каталог вина</h3>
                     </div>
                     <div class="col-2" style="width: 25%;">
                         <select class="form-select" name="order" aria-label="Default select example">
@@ -105,7 +105,7 @@
                     <div class="col-8 content_col">
                         <div class="row pt-2 m-1" style="color: white">
                            {% for wine in wines %}
-                               <div class="col-3 border mb-2 mini_content_col pt-4" style="height: 200px;">
+                               <div class="col-3 border mb-2 mini_content_col pt-4" style="height: 200px; width: 200px;">
                                <a>{{ wine.title }}</a><br>
                                <a><img src="{{ wine.image.url }}" alt="картинка" style="width: 7%; height: 40%"></a><br>
                                <a>{{ wine.sugar.title }} {{ wine.color.title }} </a><br>
