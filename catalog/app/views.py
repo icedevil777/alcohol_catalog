@@ -10,6 +10,12 @@ from .utils import update_colors_checkboxes, update_sugars_checkboxes, \
     set_false_colors_checkboxes, set_false_sugars_checkboxes
 
 
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializers import UserSerializer, GroupSerializer
+
+
 def home(request):
     return render(request, 'app/home.html')
 
@@ -76,3 +82,21 @@ class BeersView(ListView):
         context = super().get_context_data(**kwargs)
         context['types'] = Beer.TYPE
         return context
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]

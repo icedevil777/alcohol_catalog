@@ -46,11 +46,12 @@
                 <a>Воронеж</a>
             </div>
             <div class="col-sm-3 col-md-4 col-lg-2 pt-3 second-head-col">
-                  {% if user.is_authenticated %}
-                    <a> {{ user.email }} </a>
-                  {% else %}
-                      <a>Личный кабинет</a>
-                  {% endif %}
+                <a>Личный кабинет</a>
+{#                  {% if user.is_authenticated %}#}
+{#                    <a> {{ user.email }} </a>#}
+{#                  {% else %}#}
+{#                      <a>Личный кабинет</a>#}
+{#                  {% endif %}#}
             </div>
             <div class="col-sm-3 col-md-4 col-lg pt-3 second-head-col">
                 <a>Избранное</a>
