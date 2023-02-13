@@ -14,11 +14,11 @@
                     <div class="col-4">
                         <h3>Каталог вина</h3>
                     </div>
-                    <div class="col-2" style="width: 25%;">
-                        <select class="form-select" name="order" aria-label="Default select example">
+                    <div class="col-2" style="width: 25%;" >
+                        <select class="small_size form-select" name="order" aria-label="Default select example">
 {#                            <option selected>Сортировка</option>#}
                             {% for sel in sorting %}
-                                <option {% if sel.id == order_input %} selected {% endif %} value="{{ sel.id }}">
+                                <option  {% if sel.id == order_input %} selected {% endif %} value="{{ sel.id }}">
                                     {{ sel.title }}
                                 </option>
                             {% endfor %}
@@ -29,7 +29,7 @@
                         <input
                             id="wine_search"
                             type="text"
-                            class="form-control"
+                            class="form-control small_size"
                             placeholder="Что хотите найти?"
                             name="wine_search"
                             value="{{ search_input }}"

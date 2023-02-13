@@ -101,3 +101,10 @@ h3, h6{
     margin-bottom: 1%;
 }
 
+
+@media (max-width: 958px) {
+    .small_size {
+        font-size: 70%;
+
+    }
+}
